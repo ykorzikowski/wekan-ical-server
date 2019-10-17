@@ -4,11 +4,11 @@ import vobject
 import dateutil.parser
 
 LISTEN_HOST = "127.0.0.1"
-LISTEN_PORT = 8091
+LISTEN_PORT = 80
 
-WEKAN_HOST = "http://127.0.0.1:8090"
-WEKAN_USER = "admin"
-WEKAN_PASSWORD = "admin"
+WEKAN_HOST = os.getenv('WEKAN_HOST', 'http://127.0.0.1:8090')
+WEKAN_USER = os.getenv('WEKAN_USER', 'admin')
+WEKAN_PASSWORD = os.getenv('WEKAN_PW', 'admin')
 
 def create_ical_event(cal, board, card, card_info):
     event = cal.add('vevent')
