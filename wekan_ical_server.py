@@ -5,7 +5,7 @@ import dateutil.parser
 import os
 import logging as log
 
-LISTEN_HOST = "127.0.0.1"
+LISTEN_HOST = "0.0.0.0"
 LISTEN_PORT = 80
 
 WEKAN_HOST = os.getenv('WEKAN_HOST', 'http://127.0.0.1:8090')
