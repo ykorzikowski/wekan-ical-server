@@ -6,4 +6,6 @@ RUN mkdir /app \
 
 COPY wekan_ical_server.py /app/wekan_ical_server.py
 
+EXPOSE 80
+
 CMD [ "python", "/app/wekan_ical_server.py" ]
