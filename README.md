@@ -13,10 +13,12 @@ services:
     image: ykorzikowski/wekan-ical-server:latest
     restart: always
     environment:
-      TZ=Europe/Amsterdam
-      WEKAN_HOST=http://127.0.0.1:8090
-      WEKAN_USER=admin
-      WEKAN_PW=admin
+    - TZ=Europe/Amsterdam
+    - WEKAN_HOST=http://127.0.0.1:8090
+    - WEKAN_USER=admin
+    - WEKAN_PW=admin
+    ports:
+    - 8080:80
 ```
 
 # Running manually

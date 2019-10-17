@@ -1,5 +1,5 @@
 from wekanapi import WekanApi
-import BaseHTTPServer
+import http.server
 import vobject
 import dateutil.parser
 import os
@@ -18,7 +18,7 @@ def create_ical_event(cal, board, card, card_info):
     if 'description' in card_info: event.add('description').value = card_info['description']
     event.add('url').value = WEKAN_HOST + "/b/" + board.id + "/x/" + card.id
 
-class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
+class MyHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(s):
         wekan_api = WekanApi(WEKAN_HOST, {"username": WEKAN_USER, "password": WEKAN_PASSWORD})
 
@@ -38,7 +38,7 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         s.wfile.write(cal.serialize())
 
 if __name__ == '__main__':
-    server_class = BaseHTTPServer.HTTPServer
+    server_class = http.server.HTTPServer
     httpd = server_class((LISTEN_HOST, LISTEN_PORT), MyHandler)
     try:
         httpd.serve_forever()

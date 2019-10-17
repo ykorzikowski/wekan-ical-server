@@ -1,7 +1,9 @@
 FROM python:buster
 
-COPY wekan_ical_server.py /app
+RUN mkdir /app \
+    && pip install 'git+https://github.com/wekan/wekan-python-api-client.git#egg=wekanapi&subdirectory=src' \
+    && pip install vobject
 
-RUN pip install 'git+https://github.com/wekan/wekan-python-api-client.git#egg=wekanapi&subdirectory=src'
+COPY wekan_ical_server.py /app/wekan_ical_server.py
 
-CMD [ "python", "wekan_ical_server.py" ]
+CMD [ "python", "/app/wekan_ical_server.py" ]
