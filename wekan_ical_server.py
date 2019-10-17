@@ -2,6 +2,7 @@ from wekanapi import WekanApi
 import BaseHTTPServer
 import vobject
 import dateutil.parser
+import os
 
 LISTEN_HOST = "127.0.0.1"
 LISTEN_PORT = 80
